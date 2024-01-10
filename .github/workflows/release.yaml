@@ -21,10 +21,12 @@ jobs:
             curl \
             jq \
             squashfs-tools \
-            xz-utils
+            xz-utils \
+            gawk
+
 
           images=(
-              "kubernetes-v1.28.2"
+              $(curl https://raw.githubusercontent.com/kubernetes/website/main/data/releases/schedule.yaml | yq -r '.schedules[].previousPatches[0].release' | awk '{print "kubernetes-v"$1}')
               "docker-24.0.6"
               "docker_compose-2.22.0"
               "wasmtime-13.0.0"
