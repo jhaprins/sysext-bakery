@@ -24,8 +24,8 @@ jobs:
             xz-utils \
 	    awk
 
-	  testarray=$(curl https://raw.githubusercontent.com/kubernetes/website/main/data/releases/schedule.yaml | yq -r '.schedules[].previousPatches[0].release' | awk '{print "kubernetes-v"$1}')
-	  echo $testarray 
+	  # testarray=$(curl https://raw.githubusercontent.com/kubernetes/website/main/data/releases/schedule.yaml | yq -r '.schedules[].previousPatches[0].release' | awk '{print "kubernetes-v"$1}')
+	  # echo $testarray 
 
           images=(
               "docker-24.0.6"
