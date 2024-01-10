@@ -25,6 +25,8 @@ jobs:
             gawk
 
           KBS_VERS=$(curl -fsSL --retry-delay 1 --retry 60 --retry-connrefused --retry-max-time 60 --connect-timeout 20  https://raw.githubusercontent.com/kubernetes/website/main/data/releases/schedule.yaml | yq -r '.schedules[].previousPatches[0].release' | awk '{print "kubernetes-v"$1}')
+          [[ -z "${KBS_VERS}" ]] && exit 1
+
           KBS_VERS_ARRAY=(${KBS_VERS})
 
           images=(
